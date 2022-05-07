@@ -1,7 +1,7 @@
-export const EditNote = ({ setEdit }) => {
+export const EditNote = ({ setEdit, editValue }) => {
   return (
     <div>
-      <textarea cols="25" rows="5"></textarea>
+      <textarea value={editValue.note} cols="25" rows="5" />
       <div>
         <button>Save</button>
         <button onClick={() => setEdit(false)}>Close</button>

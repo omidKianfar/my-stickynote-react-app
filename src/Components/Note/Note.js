@@ -5,22 +5,30 @@ import { EditNote } from "./EditNote";
 
 const Note = ({ childNotes, Id, notes, setNotes }) => {
   const [edit, setEdit] = useState(false);
+  const [editValue, setEditValue] = useState({});
 
   const deleteNote = () => {
     const deleteNote = notes.filter((note) => note.id !== Id);
     setNotes(deleteNote);
   };
 
+  const editNote = () => {
+    setEdit(true);
+
+    const editNote = notes.find((note) => note.id === Id);
+    setEditValue(editNote);
+  };
+
   return (
     <div>
       {!edit ? (
         <NoteForm
-          setEdit={setEdit}
           childNotes={childNotes}
+          editNote={editNote}
           deleteNote={deleteNote}
         />
       ) : (
-        <EditNote setEdit={setEdit} />
+        <EditNote setEdit={setEdit} editValue={editValue} />
       )}
     </div>
   );
