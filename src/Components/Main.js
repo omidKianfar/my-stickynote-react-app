@@ -8,9 +8,11 @@ const Main = () => {
     { id: 2, note: "second" },
     { id: 3, note: "third" },
   ]);
+  const [inputNote, setInputNote] = useState("");
 
   return (
     <main>
+      <input type="text" onChange={(e) => setInputNote(e.target.value)} />
       {notes.map((note) => (
         <Note key={note.id} childNotes={note.note} />
       ))}
