@@ -21,7 +21,13 @@ const Main = () => {
       />
       <button onClick={(e) => addNote(e)}>Add Note</button>
       {notes.map((note) => (
-        <Note key={note.id} childNotes={note.note} />
+        <Note
+          key={note.id}
+          childNotes={note.note}
+          Id={note.id}
+          notes={notes}
+          setNotes={setNotes}
+        />
       ))}
     </main>
   );
