@@ -1,9 +1,11 @@
-export const NoteForm = ({ setEdit }) => {
+export const NoteForm = ({ setEdit, childNotes }) => {
   return (
     <div>
-      <p>Note</p>
-      <button onClick={() => setEdit(true)}>Edit</button>
-      <button>Delete</button>
+      <p>{childNotes}</p>
+      <div>
+        <button onClick={() => setEdit(true)}>Edit</button>
+        <button>Delete</button>
+      </div>
     </div>
   );
 };
