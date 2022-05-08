@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
+
+import { AddNote } from "../Tools/AddNote";
 
 import Note from "./Note/Note";
 
 const Main = () => {
   const [notes, setNotes] = useState([]);
   const [inputNote, setInputNote] = useState("");
-
-  const addNote = (e) => {
-    setNotes([...notes, { id: uuidv4(), note: inputNote }]);
-    setInputNote("");
-  };
 
   return (
     <main>
@@ -19,7 +15,10 @@ const Main = () => {
         value={inputNote}
         onChange={(e) => setInputNote(e.target.value)}
       />
-      <button onClick={(e) => addNote(e)}>Add Note</button>
+      <button onClick={() => AddNote(notes, setNotes, inputNote, setInputNote)}>
+        Add Note
+      </button>
+
       {notes.map((note) => (
         <Note
           key={note.id}
