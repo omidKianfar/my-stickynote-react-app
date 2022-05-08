@@ -1,13 +1,14 @@
+import { useContext } from "react";
+
+import NoteContext from "../../Hooks/NoteContext";
+import StickyContext from "../../Hooks/StickyContext";
 import { UpdateNote } from "../../Tools/UpdateNote";
 
-export const EditNote = ({
-  editValue,
-  setEditValue,
-  notes,
-  Id,
-  setNotes,
-  setEdit,
-}) => {
+export const EditNote = ({ Id }) => {
+  const stikyContextProps = useContext(StickyContext);
+  const noteContetxProps = useContext(NoteContext);
+  const { editValue, setEditValue, setEdit } = noteContetxProps;
+
   return (
     <div>
       <textarea
@@ -16,9 +17,10 @@ export const EditNote = ({
         cols="25"
         rows="5"
       />
+
       <div>
         <button
-          onClick={() => UpdateNote(notes, Id, editValue, setNotes, setEdit)}
+          onClick={() => UpdateNote(Id, noteContetxProps, stikyContextProps)}
         >
           Save
         </button>

@@ -1,34 +1,24 @@
 import { useState } from "react";
 
+import NoteContext from "../../Hooks/NoteContext";
+
 import { NoteForm } from "./NoteForm";
 import { EditNote } from "./EditForm";
 
-const Note = ({ childNotes, Id, notes, setNotes }) => {
+const Note = ({ childNotes, Id }) => {
   const [edit, setEdit] = useState(false);
   const [editValue, setEditValue] = useState("");
 
   return (
-    <div>
-      {!edit ? (
-        <NoteForm
-          Id={Id}
-          setEdit={setEdit}
-          notes={notes}
-          setNotes={setNotes}
-          setEditValue={setEditValue}
-          childNotes={childNotes}
-        />
-      ) : (
-        <EditNote
-          editValue={editValue}
-          setEditValue={setEditValue}
-          notes={notes}
-          Id={Id}
-          setNotes={setNotes}
-          setEdit={setEdit}
-        />
-      )}
-    </div>
+    <NoteContext.Provider value={{ edit, setEdit, editValue, setEditValue }}>
+      <div>
+        {!edit ? (
+          <NoteForm Id={Id} childNotes={childNotes} />
+        ) : (
+          <EditNote Id={Id} />
+        )}
+      </div>
+    </NoteContext.Provider>
   );
 };
 
