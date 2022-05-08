@@ -1,9 +1,14 @@
-export const EditNote = ({ setEdit, editValue }) => {
+export const EditNote = ({ editValue, setEditValue, updateNote, setEdit }) => {
   return (
     <div>
-      <textarea value={editValue.note} cols="25" rows="5" />
+      <textarea
+        value={editValue}
+        onChange={(e) => setEditValue(e.target.value)}
+        cols="25"
+        rows="5"
+      />
       <div>
-        <button>Save</button>
+        <button onClick={() => updateNote()}>Save</button>
         <button onClick={() => setEdit(false)}>Close</button>
       </div>
     </div>

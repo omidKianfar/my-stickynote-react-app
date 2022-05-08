@@ -5,7 +5,7 @@ import { EditNote } from "./EditNote";
 
 const Note = ({ childNotes, Id, notes, setNotes }) => {
   const [edit, setEdit] = useState(false);
-  const [editValue, setEditValue] = useState({});
+  const [editValue, setEditValue] = useState("");
 
   const deleteNote = () => {
     const deleteNote = notes.filter((note) => note.id !== Id);
@@ -16,7 +16,16 @@ const Note = ({ childNotes, Id, notes, setNotes }) => {
     setEdit(true);
 
     const editNote = notes.find((note) => note.id === Id);
-    setEditValue(editNote);
+    setEditValue(editNote.note);
+  };
+
+  const updateNote = () => {
+    const updateNote = notes.map((note) =>
+      note.id === Id ? { id: Id, note: editValue } : note
+    );
+    setNotes(updateNote);
+
+    setEdit(false);
   };
 
   return (
@@ -28,7 +37,12 @@ const Note = ({ childNotes, Id, notes, setNotes }) => {
           deleteNote={deleteNote}
         />
       ) : (
-        <EditNote setEdit={setEdit} editValue={editValue} />
+        <EditNote
+          setEdit={setEdit}
+          editValue={editValue}
+          updateNote={updateNote}
+          setEditValue={setEditValue}
+        />
       )}
     </div>
   );
