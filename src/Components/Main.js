@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { RefInputNote } from "../Hooks/RefInputNote";
 
 import StikyContetxt from "../Hooks/StickyContext";
 import { AddNote } from "../Tools/AddNote";
@@ -10,6 +11,8 @@ const Main = () => {
   const { notes, setNotes, inputNote, setInputNote, loading } =
     stikyContextProps;
 
+  const refInputNote = RefInputNote(inputNote);
+
   GetData(loading, setNotes);
 
   return (
@@ -18,6 +21,7 @@ const Main = () => {
         type="text"
         value={inputNote}
         onChange={(e) => setInputNote(e.target.value)}
+        ref={refInputNote}
       />
       <button onClick={() => AddNote(stikyContextProps)}>+</button>
 
