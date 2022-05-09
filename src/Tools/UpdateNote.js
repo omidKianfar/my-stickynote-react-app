@@ -1,8 +1,15 @@
-export const UpdateNote = (Id, { editValue, setEdit }, { notes, setNotes }) => {
-  const updateNote = notes.map((note) =>
-    note.id === Id ? { id: Id, note: editValue } : note
-  );
+import { updateNoteDbJson } from "../JsonCrud/JsonCrud";
+
+export const UpdateNote = (
+  NoteId,
+  { editValue, setEdit },
+  { notes, setNotes }
+) => {
+  const newNote = { id: NoteId, note: editValue };
+  const updateNote = notes.map((note) => (note.id === NoteId ? newNote : note));
   setNotes(updateNote);
 
   setEdit(false);
+
+  updateNoteDbJson(NoteId, newNote);
 };

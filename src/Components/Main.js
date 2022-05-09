@@ -2,11 +2,15 @@ import { useContext } from "react";
 
 import StikyContetxt from "../Hooks/StickyContext";
 import { AddNote } from "../Tools/AddNote";
+import { GetData } from "../Tools/GetData";
 import Note from "./Note/Note";
 
 const Main = () => {
   const stikyContextProps = useContext(StikyContetxt);
-  const { notes, inputNote, setInputNote } = stikyContextProps;
+  const { notes, setNotes, inputNote, setInputNote, loading } =
+    stikyContextProps;
+
+  GetData(loading, setNotes);
 
   return (
     <main>
@@ -15,10 +19,10 @@ const Main = () => {
         value={inputNote}
         onChange={(e) => setInputNote(e.target.value)}
       />
-      <button onClick={() => AddNote(stikyContextProps)}>Add Note</button>
+      <button onClick={() => AddNote(stikyContextProps)}>+</button>
 
       {notes.map((note) => (
-        <Note key={note.id} childNotes={note.note} Id={note.id} />
+        <Note key={note.id} childNotes={note.note} NoteId={note.id} />
       ))}
     </main>
   );
