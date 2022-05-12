@@ -1,0 +1,37 @@
+@import './varables.module';
+@import './flex.module';
+@import './font.module';
+
+
+.header {
+    ul {
+        width: 15%;
+        list-style-type: none;
+        margin-left: 20px;
+        padding: 5px 0 0 0;
+        @include flexCenter(row,start);
+
+
+        li {
+            padding: 10px 15px;
+            
+            &:hover {
+                background-color: $white;
+                border-radius: 5px;
+            }
+
+            &:hover a {
+                color: $darkGray; 
+             }
+
+            a {
+                color: $white;
+                @include font(18px,bold);
+
+                &:active {
+                    color: $gray;
+                }
+            } 
+        }
+    }
+}

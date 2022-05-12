@@ -1,0 +1,12 @@
+@import './varables.module';
+@import './cursor.module';
+
+.note {
+    background-color: $yellow;
+    width: 200px;
+    height: 200px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px $darkGray;
+    @include curcor(move);
+}

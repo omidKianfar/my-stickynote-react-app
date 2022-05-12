@@ -1,21 +1,23 @@
 import { useState } from "react";
 
+import Styles from "../Sass/Note.module.scss";
+
 import NoteContext from "../../Hooks/NoteContext";
+import { NoteForm } from "./NoteForm/NoteForm";
+import { EditNote } from "./EditForm/EditForm";
 
-import { NoteForm } from "./NoteForm";
-import { EditNote } from "./EditForm";
-
-const Note = ({ childNotes, Id }) => {
+const Note = ({ childNotes, NoteId }) => {
   const [edit, setEdit] = useState(false);
   const [editValue, setEditValue] = useState("");
 
   return (
     <NoteContext.Provider value={{ edit, setEdit, editValue, setEditValue }}>
-      <div>
+      {/* show note or edit note */}
+      <div className={Styles.note}>
         {!edit ? (
-          <NoteForm Id={Id} childNotes={childNotes} />
+          <NoteForm NoteId={NoteId} childNotes={childNotes} />
         ) : (
-          <EditNote Id={Id} />
+          <EditNote NoteId={NoteId} />
         )}
       </div>
     </NoteContext.Provider>

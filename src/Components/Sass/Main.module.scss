@@ -1,0 +1,35 @@
+@import './varables.module';
+@import './flex.module';
+@import './font.module';
+@import './cursor.module';
+
+.main {
+    @include flexCenter(column,center);
+
+    form {
+        width: 80%;
+        margin: 40px auto;
+        
+        input{
+            width: 89%;
+            padding: 5px;
+            margin-right: 1%;
+            border: 3px solid $darkGray;
+            border-radius: 5px;
+            @include font(14px,bold);
+        }
+
+        button {
+            width: 10%;
+            padding: 5px;
+            @include font(14px,bold);
+
+            &:hover {
+                background-color: $success;
+                color: $white;
+                border-radius: 2px;
+                @include curcor(pointer);
+            }
+        }
+    }
+}

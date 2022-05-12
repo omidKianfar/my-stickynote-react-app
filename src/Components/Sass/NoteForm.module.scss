@@ -1,0 +1,43 @@
+@import './varables.module';
+@import './flex.module';
+@import './font.module';
+@import './cursor.module';
+
+.noteForm {
+    p {
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        height: 135px;
+        margin-bottom: 10px;
+        word-break: keep-all;
+        overflow: auto;
+        @include font(14px,bold);
+
+    } 
+
+    section {
+        @include flexCenter(row, space-between);
+    }
+
+    button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        background: none;
+        @include curcor(pointer);
+        @include font(12px,bold);
+        
+    }
+
+    .editBtn {
+        background-color: $lightBlue;
+        &:hover {
+            background-color: $blue;
+        }
+    } 
+
+    .deleteBtn:hover {
+        background-color: $red;
+    }
+}
+ 
+

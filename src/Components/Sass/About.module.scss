@@ -1,0 +1,42 @@
+@import './varables.module';
+@import './flex.module';
+@import './font.module';
+
+.main {
+    
+    h1 {
+        text-align: center;
+        color: $lightBlue;
+        @include font(36px,bold);
+    }
+
+    section {
+        @include flexCenter(column,center);
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+
+        h3 {
+            color: $lightBlue;
+            @include font(24px,bold);
+        }
+
+        p {
+            color: $white;
+        }
+
+        a {
+            color: $white;
+            &:hover {
+                color: $lightBlue;
+            }
+        }
+      
+    }
+
+
+}
