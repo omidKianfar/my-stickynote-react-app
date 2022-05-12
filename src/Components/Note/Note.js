@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Draggable from "react-draggable";
 
 import Styles from "../Sass/Note.module.scss";
 
@@ -13,13 +14,15 @@ const Note = ({ childNotes, NoteId }) => {
   return (
     <NoteContext.Provider value={{ edit, setEdit, editValue, setEditValue }}>
       {/* show note or edit note */}
-      <div className={Styles.note}>
-        {!edit ? (
-          <NoteForm NoteId={NoteId} childNotes={childNotes} />
-        ) : (
-          <EditNote NoteId={NoteId} />
-        )}
-      </div>
+      <Draggable>
+        <div className={Styles.note}>
+          {!edit ? (
+            <NoteForm NoteId={NoteId} childNotes={childNotes} />
+          ) : (
+            <EditNote NoteId={NoteId} />
+          )}
+        </div>
+      </Draggable>
     </NoteContext.Provider>
   );
 };
