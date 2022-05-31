@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Styles from "../Sass/Main.module.scss";
 
@@ -6,12 +6,11 @@ import { RefInputNote } from "../../Hooks/RefInputNote";
 import StikyContetxt from "../../Hooks/StickyContext";
 import { AddNote } from "../../Tools/AddNote";
 import { GetData } from "../../Tools/GetData";
-import Note from "../Note/Note";
+import NoteList from "../Note/NoteList/NoteList";
 
 const Main = () => {
   const stikyContextProps = useContext(StikyContetxt);
-  const { notes, setNotes, inputNote, setInputNote, loading } =
-    stikyContextProps;
+  const { setNotes, inputNote, setInputNote, loading } = stikyContextProps;
 
   // default focus on inputNote with ref
   const refInputNote = RefInputNote(inputNote);
@@ -21,7 +20,11 @@ const Main = () => {
 
   return (
     <main className={Styles.main}>
-      <form action="" onSubmit={(e) => AddNote(e, stikyContextProps)}>
+      <form
+        className={Styles.form}
+        action=""
+        onSubmit={(e) => AddNote(e, stikyContextProps)}
+      >
         <input
           type="text"
           value={inputNote}
@@ -31,9 +34,9 @@ const Main = () => {
         <button type="submit">Add Note</button>
       </form>
 
-      {notes.map((note) => (
-        <Note key={note.id} childNotes={note.note} NoteId={note.id} />
-      ))}
+      <section>
+        <NoteList />
+      </section>
     </main>
   );
 };

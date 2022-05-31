@@ -1,5 +1,6 @@
 import { updateNoteDbJson } from "../JsonCrud/JsonCrud";
 
+// Update note data in db.json
 export const UpdateNote = (
   NoteId,
   { editValue, setEdit },

@@ -1,11 +1,9 @@
-import { Fragment } from "react";
-
 import Layout from "./Components/Layout";
 function StikyNote() {
   return (
-    <Fragment>
+    <div>
       <Layout />
-    </Fragment>
+    </div>
   );
 }
 

@@ -4,9 +4,8 @@
 @import './cursor.module';
 
 .main {
-    @include flexCenter(column,center);
-
-    form {
+    .form {
+        @include flexCenter(row,center);
         width: 80%;
         margin: 40px auto;
         
@@ -30,6 +29,7 @@
                 border-radius: 2px;
                 @include curcor(pointer);
             }
-        }
+        }  
     }
+   
 }
